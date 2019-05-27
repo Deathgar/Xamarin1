@@ -1,19 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customElements="clr-namespace:Test3.Custom_Elements;assembly=Test3"
              x:Class="Test3.ChangePokemonPage">
     <ContentPage.Content>
         <StackLayout Padding="10,10,0,0">
             <ScrollView>
-                <StackLayout>
+                <StackLayout WidthRequest="20">
                     <!--<Label Text="PokemonName:" FontSize="Medium" FontAttributes="Bold"></Label>
                     <Label x:Name="PokemonName" FontSize="Small" Margin="10,0,0,0" FontAttributes="Bold"></Label>-->
                     <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
-                    <Entry x:Name="Name"  FontSize="Small" Margin="10,0,0,0"></Entry>
+
+                    <AbsoluteLayout>
+                        <Entry x:Name="Name" WidthRequest="150" HeightRequest="40" FontSize="Small" Margin="10,0,0,0"></Entry>
+                    
+
+
                     <Label Text="Height:" FontSize="Medium"  Margin="0,3,0,0"></Label>
-                    <Entry x:Name="Height" FontSize="Small" Margin="10,0,0,0"/>
-                    <Label Text="Weight:" FontSize="Medium" Margin="0,3,0,0"></Label>
-                    <Entry x:Name="Weight" FontSize="Small" Margin="10,0,0,0"/>
+                    <AbsoluteLayout>
+                        <customElements:SquadEntry x:Name="Height" FontSize="Small" Margin="10,0,0,0">
+                            <customElements:SquadEntry.Behaviors>
+                                <customElements:ValidTextNumbBehavior/>
+                            </customElements:SquadEntry.Behaviors>
+                        </customElements:SquadEntry>
+                    </AbsoluteLayout>
+                <Label Text="Weight:" FontSize="Medium" Margin="0,3,0,0"></Label>
+                    <customElements:SquadEntry x:Name="Weight" FontSize="Small" Margin="10,0,0,0">
+                        <customElements:SquadEntry.Behaviors>
+                            <customElements:ValidTextNumbBehavior/>
+                        </customElements:SquadEntry.Behaviors>
+                    </customElements:SquadEntry>
                 </StackLayout>
             </ScrollView>
             <StackLayout Orientation="Horizontal">

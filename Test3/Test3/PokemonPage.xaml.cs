@@ -24,6 +24,7 @@ namespace Test3
                 Path = "Name"
             };
 
+
             Title = pokemon.PokemonName;
             Name.SetBinding(Label.TextProperty, bindingName);
 
