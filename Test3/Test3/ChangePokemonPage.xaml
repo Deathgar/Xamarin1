@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Test3.ChangePokemonPage">
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,0,0">
+            <ScrollView>
+                <StackLayout>
+                    <!--<Label Text="PokemonName:" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label x:Name="PokemonName" FontSize="Small" Margin="10,0,0,0" FontAttributes="Bold"></Label>-->
+                    <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
+                    <Entry x:Name="Name"  FontSize="Small" Margin="10,0,0,0"></Entry>
+                    <Label Text="Height:" FontSize="Medium"  Margin="0,3,0,0"></Label>
+                    <Entry x:Name="Height" FontSize="Small" Margin="10,0,0,0"/>
+                    <Label Text="Weight:" FontSize="Medium" Margin="0,3,0,0"></Label>
+                    <Entry x:Name="Weight" FontSize="Small" Margin="10,0,0,0"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Change" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,8" HeightRequest="45" WidthRequest="100" FontSize="10" Clicked="Change"></Button>
+                <Button Text="Cancel" HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,8" HeightRequest="45" WidthRequest="100" FontSize="10" Clicked="Cancel"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
