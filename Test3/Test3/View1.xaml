@@ -5,7 +5,6 @@
              Title="View">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center" >
-          <Label Text="Olololo"  />
-      </StackLayout>
+        </StackLayout>
   </ContentPage.Content>
 </ContentPage>

@@ -40,9 +40,12 @@ namespace Test3.Droid.CustomRenderers
                 rect.SetColor(view.BackgroundColor.ToAndroid());
                 rect.SetStroke(1, global::Android.Graphics.Color.Black);
                 rect.SetCornerRadius(25f); 
+                rect.SetSize(200, 10);
 
                // rect.SetSize(Convert.ToInt32(view.WidthRequest), Convert.ToInt32(view.HeightRequest));
                 Control.SetBackground(rect);
+                Control.SetPadding(20, 5,20,0);
+                Control.SetHeight(60);
             }
         }
 
