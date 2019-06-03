@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customElements1="clr-namespace:XamarinPokemons.Custom_Elements;assembly=XamarinPokemons"
+             xmlns:customEntry="clr-namespace:XamarinPokemons.Custom_Elements.CustomEntry;assembly=XamarinPokemons"
+             xmlns:customEntryBehavior="clr-namespace:XamarinPokemons.Custom_Elements.CustomEntryBehavior;assembly=XamarinPokemons"
+             x:Class="XamarinPokemons.View.PokemonPages.ChangePokemonPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="bottomButtons" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Margin" Value="0,0,0,8"/>
+                <Setter Property="HeightRequest" Value="45"/>
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,0,0">
+            <ScrollView>
+                <StackLayout WidthRequest="20">
+                    <!--<Label Text="PokemonName:" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label x:Name="PokemonName" FontSize="Small" Margin="10,0,0,0" FontAttributes="Bold"></Label>-->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
+
+                        <RelativeLayout>
+                            <Entry x:Name="Name" FontSize="12" WidthRequest="160" Margin="11,11,0,0" ></Entry>
+                        </RelativeLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,8,0,0">
+                        <Label Text="Height:" FontSize="Medium"></Label>
+                        <RelativeLayout>
+                            <customEntry:SquadEntry x:Name="Height"  WidthRequest="160" FontSize="15" Margin="6,4,0,0">
+                                <customEntry:SquadEntry.Behaviors>
+                                    <customEntryBehavior:ValidTextNumbBehavior/>
+                                </customEntry:SquadEntry.Behaviors>
+                            </customEntry:SquadEntry>
+                        </RelativeLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Margin="0,8,0,0">
+                        <Label Text="Weight:" FontSize="Medium"></Label>
+                        <RelativeLayout>
+                            <customEntry:SquadEntry x:Name="Weight"  WidthRequest="160" FontSize="15" Margin="4,4,0,0">
+                                <customEntry:SquadEntry.Behaviors>
+                                    <customEntryBehavior:ValidTextNumbBehavior/>
+                                </customEntry:SquadEntry.Behaviors>
+                            </customEntry:SquadEntry>
+                        </RelativeLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal" Padding="15">
+                <Button x:Name="ChangeButton" Text="Change" Style="{StaticResource bottomButtons}" Command="{Binding BindingContext.ChangeCommand}"></Button>
+                <Button Text="Cancel" Style="{StaticResource bottomButtons}" Clicked="Cancel"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

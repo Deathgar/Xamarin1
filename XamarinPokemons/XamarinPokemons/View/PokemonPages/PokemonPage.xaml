@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinPokemons.View.PokemonPages.PokemonPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="pokemonLabels" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Margin" Value="10,0,0,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10,10,0,0">
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
+                    <Label x:Name="Name" Text="{Binding Name}" Style="{StaticResource pokemonLabels}"></Label>
+                    <Label Text="Height:" FontSize="Medium"  Margin="0,3,0,0"></Label>
+                    <Label x:Name="Height" Text="{Binding Height}" Style="{StaticResource pokemonLabels}"/>
+                    <Label Text="Weight:" FontSize="Medium" Margin="0,3,0,0"></Label>
+                    <Label x:Name="Weight" Text="{Binding Weight}" Style="{StaticResource pokemonLabels}"/>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Orientation="Horizontal">
+                <Button HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,8" Text="Change" HeightRequest="45" WidthRequest="100" FontSize="10" Command="{Binding PokemonsViewModel.GoOnChangePageCommand}"></Button>
+            </StackLayout>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
