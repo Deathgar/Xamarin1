@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -14,11 +16,11 @@ namespace XamarinPokemons.View.PokemonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangePokemonPage : ContentPage
     {
-        private PokemonViewModel pokemon;
+        private Pokemon Pokemon { get; set; }
         private int resultHeight;
         private int resultWeight;
         private bool canChange = true;
-        public Command ChangeCommand => new Command(async () => await Change(), () => canChange);
+        public Command ChangeCommand => new Command( async () => await Change(), () => canChange);
 
         //public ICommand ChangeCommand
         //{
@@ -26,49 +28,65 @@ namespace XamarinPokemons.View.PokemonPages
         //    set { _baseCommand = value; }
         //}
 
-        public ChangePokemonPage(PokemonViewModel pokemon)
+ 
+
+        public ChangePokemonPage(Pokemon pokemon)
         {
             InitializeComponent();
-            this.pokemon = pokemon;
+            this.Pokemon = pokemon;
             BindingContext = this;
             Title = pokemon.PokemonName;
-            Name.Text = pokemon.Name;
-            Name.TextChanged += TextChange;
-            Height.Text = pokemon.Height.ToString();
-            Height.TextChanged += TextChange;
-            Weight.Text = pokemon.Weight.ToString();
-            Weight.TextChanged += TextChange;
+            NameEntry.Text = pokemon.Name;
+            HeightEntry.Text = pokemon.Height.ToString();
+            WeightEntry.Text = pokemon.Weight.ToString();
 
+            canChange = false;
+            ChangeCommand.ChangeCanExecute();
             // ChangeCommand = new Command(async () => await Change());
 
         }
 
         private async Task Change()
         {
-            pokemon.Name = Name.Text;
-            pokemon.Height = Int32.Parse(Height.Text);
-            pokemon.Weight = Int32.Parse(Weight.Text);
+            Pokemon.Name = NameEntry.Text;
+            Pokemon.Height = Int32.Parse(HeightEntry.Text);
+            Pokemon.Weight = Int32.Parse(WeightEntry.Text);
             await Navigation.PopAsync();
         }
 
-        private void TextChange(object sender, TextChangedEventArgs args)
-        {
-            if (Int32.TryParse(Height.Text, out resultHeight) && Int32.TryParse(Weight.Text, out resultWeight)
-                                                              && !String.IsNullOrWhiteSpace(Height.Text) && !String.IsNullOrWhiteSpace(Weight.Text)
-                                                              && !String.IsNullOrWhiteSpace(Name.Text))
-            {
-                canChange = true;
-            }
-            else
-            {
-                canChange = false;
-            }
+        //private void IntChange(object sender, TextChangedEventArgs args)
+        //{
+
+        //}
+
+        //private void IntChange(object sender, TextChangedEventArgs args)
+        //{
+        //    if (Int32.TryParse(Height.Text, out resultHeight) && Int32.TryParse(Weight.Text, out resultWeight))
+        //    {
+        //        canChange = true;
+        //    }
+        //    else
+        //    {
+        //        canChange = false;
+        //    }
 
 
-            ChangeCommand.ChangeCanExecute();
-        }
+        //    ((Command)ChangeCommand).ChangeCanExecute();
+        //}
 
+        //private void TextChange(object sender, TextChangedEventArgs args)
+        //{
+        //    if (String.IsNullOrWhiteSpace(Height.Text) && !String.IsNullOrWhiteSpace(Weight.Text) && !String.IsNullOrWhiteSpace(Name.Text))
+        //    {
+        //        canChange = true;
+        //    }
+        //    else
+        //    {
+        //        canChange = false;
+        //    }
 
+        //    ((Command)ChangeCommand).ChangeCanExecute();
+        //}
         private async void Cancel(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

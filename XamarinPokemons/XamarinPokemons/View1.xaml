@@ -4,8 +4,8 @@
              x:Class="XamarinPokemons.View1"
              Title="View">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" >
-            <Label Text="dawdawdawdawd"></Label>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Something preview"></Label>
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

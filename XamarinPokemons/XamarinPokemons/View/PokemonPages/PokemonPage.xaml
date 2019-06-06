@@ -15,15 +15,15 @@
             <ScrollView>
                 <StackLayout>
                     <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
-                    <Label x:Name="Name" Text="{Binding Name}" Style="{StaticResource pokemonLabels}"></Label>
+                    <Label x:Name="Name"  Style="{StaticResource pokemonLabels}"></Label>
                     <Label Text="Height:" FontSize="Medium"  Margin="0,3,0,0"></Label>
-                    <Label x:Name="Height" Text="{Binding Height}" Style="{StaticResource pokemonLabels}"/>
+                    <Label x:Name="Height"  Style="{StaticResource pokemonLabels}"/>
                     <Label Text="Weight:" FontSize="Medium" Margin="0,3,0,0"></Label>
-                    <Label x:Name="Weight" Text="{Binding Weight}" Style="{StaticResource pokemonLabels}"/>
+                    <Label x:Name="Weight"  Style="{StaticResource pokemonLabels}"/>
                 </StackLayout>
             </ScrollView>
             <StackLayout Orientation="Horizontal">
-                <Button HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,8" Text="Change" HeightRequest="45" WidthRequest="100" FontSize="10" Command="{Binding PokemonsViewModel.GoOnChangePageCommand}"></Button>
+                <Button HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,8" Text="Change" HeightRequest="45" WidthRequest="100" FontSize="10" Command="{Binding ChangePokemonCommand}"></Button>
             </StackLayout>
            
         </StackLayout>

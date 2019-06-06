@@ -5,9 +5,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinPokemons.Database;
+using XamarinPokemons.Database.DbRepositories;
 using XamarinPokemons.Models;
 using XamarinPokemons.View.PokemonPages;
 using XamarinPokemons.ViewModels.Pokemons;
@@ -15,29 +17,25 @@ using XamarinPokemons.ViewModels.Pokemons;
 namespace XamarinPokemons
 {
     [DesignTimeVisible(true)]
-    public partial class MasterPage : MasterDetailPage
+    public partial class MasterPage : ContentPage
     {
         public PokemonsViewModel pokemonsViewModel;
         public MasterPage()
         {
             InitializeComponent();
 
+            //App.PokemonRepo.AddPokemon(new Pokemon
+            //{
+            //    PokemonName = "Pikachu", Name = "Pika", Height = 30, Weight = 12,
+            //    ImageSource = ImageSource.FromFile("Pikachu.png")
+            //});
+
             pokemonsViewModel = new PokemonsViewModel();
+            pokemonsViewModel.Pokemons = new ObservableCollection<Pokemon>() { new Pokemon {PokemonName = "Pikachu",Name = "Pika", Height = 30, Weight = 12, ImageSource = ImageSource.FromFile("Pikachu.png")},
+                new Pokemon { PokemonName = "Charizard",Name = "Char", Height = 170, Weight = 90, ImageSource = "Charizard.png"},
+                new Pokemon { PokemonName = "Squirtle",Name = "Squirtle", Height = 50, Weight = 9, ImageSource = ImageSource.FromFile("Squirtle.png")}};
 
-            var PersonalFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-
-            pokemonsViewModel.Pokemons = new ObservableCollection<PokemonViewModel>() { new PokemonViewModel {PokemonName = "Pikachu",Name = "Pika", Height = 30, Weight = 12, ImageSource = ImageSource.FromFile("Pikachu.png")},
-                new PokemonViewModel { PokemonName = "Charizard",Name = "Char", Height = 170, Weight = 90, ImageSource = "Charizard.png"},
-                new PokemonViewModel { PokemonName = "Squirtle",Name = "Squirtle", Height = 50, Weight = 9, ImageSource = ImageSource.FromFile("Squirtle.png")}};
-
-
-
-            Detail = new NavigationPage(new View1())
-            {
-                BarBackgroundColor = Color.DeepSkyBlue
-            };
-
-            pokemonsViewModel.Navigation = Navigation;
+           // pokemonsViewModel.Pokemons = new ObservableCollection<Pokemon>(App.PokemonRepo.GetPokemons());
 
             var orderedViewModel = pokemonsViewModel.Pokemons.OrderBy(pokemon => pokemon.Name);
 
@@ -48,14 +46,16 @@ namespace XamarinPokemons
 
         public void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var pokemonViewModel = e.Item as PokemonViewModel;
+            var pokemon = e.Item as Pokemon;
 
-            pokemonsViewModel.SelectedPokemon = pokemonViewModel;
-            //Detail = new DetailNavigationPage(new PokemonPage(pokemonViewModel))
+            pokemonsViewModel.SelectedPokemon = pokemon;
+
+            //Detail = new NavigationPage(new PokemonPage(pokemonViewModel))
             //{
             //    BarBackgroundColor = Color.DeepSkyBlue
             //};
-            IsPresented = false;
         }
+
+
     }
 }

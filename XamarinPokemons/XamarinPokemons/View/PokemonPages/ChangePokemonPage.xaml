@@ -27,14 +27,14 @@
                         <Label Text="Name:" FontSize="Medium" Margin="0,6,0,0"></Label>
 
                         <RelativeLayout>
-                            <Entry x:Name="Name" FontSize="12" WidthRequest="160" Margin="11,11,0,0" ></Entry>
+                            <Entry x:Name="NameEntry" FontSize="12" WidthRequest="160" Margin="11,11,0,0" ></Entry>
                         </RelativeLayout>
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" Margin="0,8,0,0">
                         <Label Text="Height:" FontSize="Medium"></Label>
                         <RelativeLayout>
-                            <customEntry:SquadEntry x:Name="Height"  WidthRequest="160" FontSize="15" Margin="6,4,0,0">
+                            <customEntry:SquadEntry x:Name="HeightEntry"  WidthRequest="160" FontSize="15" Margin="6,4,0,0" >
                                 <customEntry:SquadEntry.Behaviors>
                                     <customEntryBehavior:ValidTextNumbBehavior/>
                                 </customEntry:SquadEntry.Behaviors>
@@ -45,7 +45,7 @@
                     <StackLayout Orientation="Horizontal" Margin="0,8,0,0">
                         <Label Text="Weight:" FontSize="Medium"></Label>
                         <RelativeLayout>
-                            <customEntry:SquadEntry x:Name="Weight"  WidthRequest="160" FontSize="15" Margin="4,4,0,0">
+                            <customEntry:SquadEntry x:Name="WeightEntry"  WidthRequest="160" FontSize="15" Margin="4,4,0,0">
                                 <customEntry:SquadEntry.Behaviors>
                                     <customEntryBehavior:ValidTextNumbBehavior/>
                                 </customEntry:SquadEntry.Behaviors>
@@ -55,7 +55,7 @@
                 </StackLayout>
             </ScrollView>
             <StackLayout Orientation="Horizontal" Padding="15">
-                <Button x:Name="ChangeButton" Text="Change" Style="{StaticResource bottomButtons}" Command="{Binding BindingContext.ChangeCommand}"></Button>
+                <Button x:Name="ChangeButton" Text="Change" Style="{StaticResource bottomButtons}" Command="{Binding ChangeCommand}"></Button>
                 <Button Text="Cancel" Style="{StaticResource bottomButtons}" Clicked="Cancel"></Button>
             </StackLayout>
         </StackLayout>

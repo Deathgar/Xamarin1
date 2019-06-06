@@ -8,52 +8,126 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinPokemons.Annotations;
 using XamarinPokemons.Models;
+using XamarinPokemons.Services;
 using XamarinPokemons.View.PokemonPages;
 
 namespace XamarinPokemons.ViewModels.Pokemons
 {
-    public class PokemonsViewModel : ContentPage, INotifyPropertyChanged
+    public class PokemonsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<PokemonViewModel> Pokemons { get; set; }
+        public ObservableCollection<Pokemon> Pokemons { get; set; }
         public INavigation Navigation { get; set; }
-        PokemonViewModel selectedPokemon;
+        Pokemon selectedPokemon;
 
         public ICommand AddPokemonCommand;
-        public ICommand ChangePokemonCommand;
+
+        public ICommand ChangePokemonCommand => new Command(GoOnChangePage);
         public ICommand DeletePokemonCommand;
 
-        public ICommand GoOnChangePageCommand;
 
-        public PokemonsViewModel()
+        #region Properties
+
+        public string Name
         {
-            GoOnChangePageCommand = new Command(GoOnChangePage);
+            get => selectedPokemon.Name;
+
+            set
+            {
+                if (value != selectedPokemon.Name)
+                {
+                    selectedPokemon.Name = value;
+                    OnPropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(SelectedPokemon));
+                }
+            }
         }
 
-        public PokemonViewModel SelectedPokemon
+        public string PokemonName
+        {
+            get => selectedPokemon.PokemonName;
+
+            set
+            {
+                if (value != selectedPokemon.PokemonName)
+                {
+                    selectedPokemon.Name = value;
+                    OnPropertyChanged(nameof(PokemonName));
+                    OnPropertyChanged(nameof(SelectedPokemon));
+                }
+            }
+        }
+
+        public int Weight
+        {
+            get => selectedPokemon.Weight;
+
+            set
+            {
+                if (value != selectedPokemon.Weight)
+                {
+                    selectedPokemon.Weight = value;
+                    OnPropertyChanged(nameof(Weight));
+                    OnPropertyChanged(nameof(SelectedPokemon));
+                }
+            }
+        }
+
+        public int Height
+        {
+            get => selectedPokemon.Height;
+
+            set
+            {
+                if (value != selectedPokemon.Height)
+                {
+                    selectedPokemon.Height = value;
+                    OnPropertyChanged(nameof(Height));
+                    OnPropertyChanged(nameof(SelectedPokemon));
+                }
+            }
+        }
+
+        public ImageSource ImageSource
+        {
+            get => selectedPokemon.ImageSource;
+
+            set
+            {
+                if (value != selectedPokemon.ImageSource)
+                {
+                    selectedPokemon.ImageSource = value;
+                    OnPropertyChanged(nameof(Height));
+                    OnPropertyChanged(nameof(SelectedPokemon));
+                }
+            }
+        }
+        #endregion
+
+        public Pokemon SelectedPokemon
         {
             get { return selectedPokemon; }
             set
             {
                 if (selectedPokemon != value)
                 {
-                    var tempPokemonViewModel = value;
-                    tempPokemonViewModel.PokemonsViewModel = this;
-                    selectedPokemon = null;
-                    OnPropertyChanged(nameof(PokemonsViewModel));
-                    GoOnPokemonPage(tempPokemonViewModel);
+                    selectedPokemon = value;
+                    OnPropertyChanged(nameof(SelectedPokemon));
+
+                    GoOnPokemonPage(new PokemonPage(this));
+
                 }
             }
         }
 
-        private async void GoOnPokemonPage(PokemonViewModel tempPokemonViewModel)
+        public void GoOnPokemonPage(Page pokemonPage)
         {
-            await Navigation.PushAsync(new NavigationPage(new PokemonPage(tempPokemonViewModel)));
+            NavigationService.GoOnPokemonPage(pokemonPage);
         }
 
-        private async void GoOnChangePage()
+        private void GoOnChangePage()
         {
-            await Navigation.PushAsync(new ChangePokemonPage(selectedPokemon));
+            NavigationService.GoOnPokemonPage(new ChangePokemonPage(selectedPokemon));
         }
 
         [NotifyPropertyChangedInvocator]

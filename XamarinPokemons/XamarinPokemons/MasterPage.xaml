@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinPokemons;assembly=XamarinPokemons"
              x:Class="XamarinPokemons.MasterPage"
              Title="Something"
-             BackgroundColor="DeepSkyBlue">
+             BackgroundColor="AliceBlue">
 
-    <MasterDetailPage.Master>
-        <ContentPage Title="Master" BackgroundColor="AliceBlue">
             <ContentPage.Content>
                 <StackLayout>
-                    <ListView x:Name="listDetail" ItemsSource="{Binding PokemonViewModel}" HasUnevenRows="True" ItemTapped="OnItemTapped">
+                <ListView x:Name="listDetail" ItemsSource="{Binding PokemonsViewModel}" HasUnevenRows="True" ItemTapped="OnItemTapped">
                         <ListView.Header>
                             <StackLayout Padding="10,0,0,0" HeightRequest="56" BackgroundColor="DeepSkyBlue" Orientation="Horizontal">
                                 <Image x:Name="L" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" Aspect="AspectFit"></Image>
@@ -36,7 +34,5 @@
                 </StackLayout>
             </ContentPage.Content>
 
-        </ContentPage>
-    </MasterDetailPage.Master>
+</ContentPage>
 
-</MasterDetailPage>

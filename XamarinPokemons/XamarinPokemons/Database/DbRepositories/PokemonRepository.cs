@@ -8,7 +8,7 @@ using XamarinPokemons.Models;
 
 namespace XamarinPokemons.Database.DbRepositories
 {
-    class PokemonRepository
+    class PokemonRepository : IRepo
     {
         SQLiteConnection database;
         public PokemonRepository(string filename)
@@ -32,7 +32,7 @@ namespace XamarinPokemons.Database.DbRepositories
         {
             return database.Delete<Pokemon>(id);
         }
-
+   
         public int AddPokemon(Pokemon pokemon)
         {
             if (pokemon.Id != 0)

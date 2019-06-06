@@ -14,30 +14,36 @@ namespace XamarinPokemons.View.PokemonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PokemonPage : ContentPage
     {
-        private PokemonViewModel pokemonViewModel;
 
         public PokemonPage()
         {
 
         }
 
-        public PokemonPage(PokemonViewModel pokemonViewModel)
+        public PokemonPage(PokemonsViewModel pokemonVM)
         {
             InitializeComponent();
-            this.BindingContext = pokemonViewModel;
-            this.pokemonViewModel = pokemonViewModel;
+            this.BindingContext = pokemonVM;
             var bindingName = new Binding
             {
-                Source = pokemonViewModel,
+                Source = BindingContext,
                 Path = "Name"
             };
+            var bindingHeight = new Binding
+            {
+                Source = BindingContext,
+                Path = "Height"
+            };
+            var bindingWeight = new Binding
+            {
+                Source = BindingContext,
+                Path = "Weight"
+            };
 
-            Title = pokemonViewModel.PokemonName;
+            Title = pokemonVM.SelectedPokemon.PokemonName;
             Name.SetBinding(Label.TextProperty, bindingName);
-
-            Height.Text = pokemonViewModel.Height.ToString();
-            Weight.Text = pokemonViewModel.Weight.ToString();
-
+            Height.SetBinding(Label.TextProperty, bindingHeight);
+            Weight.SetBinding(Label.TextProperty, bindingWeight);
         }
     }
 }
