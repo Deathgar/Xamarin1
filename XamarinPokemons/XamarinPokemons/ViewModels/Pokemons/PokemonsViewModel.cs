@@ -24,7 +24,7 @@ namespace XamarinPokemons.ViewModels.Pokemons
 
         public ICommand ChangePokemonCommand => new Command(GoOnChangePage);
         public ICommand DeletePokemonCommand;
-
+  
 
         #region Properties
 
@@ -38,7 +38,6 @@ namespace XamarinPokemons.ViewModels.Pokemons
                 {
                     selectedPokemon.Name = value;
                     OnPropertyChanged(nameof(Name));
-                    OnPropertyChanged(nameof(SelectedPokemon));
                 }
             }
         }
@@ -53,7 +52,6 @@ namespace XamarinPokemons.ViewModels.Pokemons
                 {
                     selectedPokemon.Name = value;
                     OnPropertyChanged(nameof(PokemonName));
-                    OnPropertyChanged(nameof(SelectedPokemon));
                 }
             }
         }
@@ -68,7 +66,6 @@ namespace XamarinPokemons.ViewModels.Pokemons
                 {
                     selectedPokemon.Weight = value;
                     OnPropertyChanged(nameof(Weight));
-                    OnPropertyChanged(nameof(SelectedPokemon));
                 }
             }
         }
@@ -83,7 +80,6 @@ namespace XamarinPokemons.ViewModels.Pokemons
                 {
                     selectedPokemon.Height = value;
                     OnPropertyChanged(nameof(Height));
-                    OnPropertyChanged(nameof(SelectedPokemon));
                 }
             }
         }
@@ -98,7 +94,6 @@ namespace XamarinPokemons.ViewModels.Pokemons
                 {
                     selectedPokemon.ImageSource = value;
                     OnPropertyChanged(nameof(Height));
-                    OnPropertyChanged(nameof(SelectedPokemon));
                 }
             }
         }
@@ -114,7 +109,7 @@ namespace XamarinPokemons.ViewModels.Pokemons
                     selectedPokemon = value;
                     OnPropertyChanged(nameof(SelectedPokemon));
 
-                    GoOnPokemonPage(new PokemonPage(this));
+                    NavigationService.GoOnPokemonPage(new PokemonPage());
 
                 }
             }
