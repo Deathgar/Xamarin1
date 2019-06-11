@@ -8,7 +8,7 @@
 
             <ContentPage.Content>
                 <StackLayout>
-                <ListView x:Name="listDetail" ItemsSource="{Binding PokemonsViewModel}" HasUnevenRows="True" ItemTapped="OnItemTapped">
+            <ListView x:Name="listDetail" HasUnevenRows="True" ItemTapped="{Binding OnItemTapped}">
                         <ListView.Header>
                             <StackLayout Padding="10,0,0,0" HeightRequest="56" BackgroundColor="DeepSkyBlue" Orientation="Horizontal">
                                 <Image x:Name="L" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" Aspect="AspectFit"></Image>

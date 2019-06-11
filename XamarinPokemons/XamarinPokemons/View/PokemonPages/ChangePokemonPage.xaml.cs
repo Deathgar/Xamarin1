@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPokemons.Models;
+using XamarinPokemons.ViewModels;
 using XamarinPokemons.ViewModels.Pokemons;
 
 namespace XamarinPokemons.View.PokemonPages
@@ -16,7 +17,7 @@ namespace XamarinPokemons.View.PokemonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangePokemonPage : ContentPage
     {
-        private Pokemon Pokemon { get; set; }
+        private PokemonViewModel Pokemon { get; set; }
         private int resultHeight;
         private int resultWeight;
         private bool canChange = true;
@@ -30,15 +31,15 @@ namespace XamarinPokemons.View.PokemonPages
 
  
 
-        public ChangePokemonPage(Pokemon pokemon)
+        public ChangePokemonPage(PokemonPageViewModel pokemonPageViewModel)
         {
             InitializeComponent();
-            this.Pokemon = pokemon;
+            this.Pokemon = pokemonPageViewModel.SelectedPokemon;
             BindingContext = this;
-            Title = pokemon.PokemonName;
-            NameEntry.Text = pokemon.Name;
-            HeightEntry.Text = pokemon.Height.ToString();
-            WeightEntry.Text = pokemon.Weight.ToString();
+            Title = Pokemon.PokemonName;
+            NameEntry.Text = Pokemon.Name;
+            HeightEntry.Text = Pokemon.Height.ToString();
+            WeightEntry.Text = Pokemon.Weight.ToString();
 
             canChange = false;
             ChangeCommand.ChangeCanExecute();

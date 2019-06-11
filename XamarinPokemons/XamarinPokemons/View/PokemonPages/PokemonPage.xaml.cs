@@ -19,34 +19,37 @@ namespace XamarinPokemons.View.PokemonPages
         public PokemonPage()
         {
             InitializeComponent();
-            BindingContext = new PokemonsViewModel();
+            BindingContext = new PokemonPageViewModel();
         
         }
 
-        //public PokemonPage(PokemonsViewModel pokemonVM)
-        //{
-            
-        //    this.BindingContext = pokemonVM;
-        //    var bindingName = new Binding
-        //    {
-        //        Source = BindingContext,
-        //        Path = "Name"
-        //    };
-        //    var bindingHeight = new Binding
-        //    {
-        //        Source = BindingContext,
-        //        Path = "Height"
-        //    };
-        //    var bindingWeight = new Binding
-        //    {
-        //        Source = BindingContext,
-        //        Path = "Weight"
-        //    };
+        public PokemonPage(PokemonPageViewModel pokemonPageVM)
+        {
+            InitializeComponent();
+            this.BindingContext = pokemonPageVM;
+            var bindingName = new Binding
+            {
+                Source = pokemonPageVM.SelectedPokemon,
+                Path = "Name"
+            };
+            var bindingHeight = new Binding
+            {
+                Source = pokemonPageVM.SelectedPokemon,
+                Path = "Height"
+            };
+            var bindingWeight = new Binding
+            {
+                Source = pokemonPageVM.SelectedPokemon,
+                Path = "Weight"
+            };
 
-        //    Title = pokemonVM.SelectedPokemon.PokemonName;
-        //    Name.SetBinding(Label.TextProperty, bindingName);
-        //    Height.SetBinding(Label.TextProperty, bindingHeight);
-        //    Weight.SetBinding(Label.TextProperty, bindingWeight);
-        //}
+
+            Title = pokemonPageVM.SelectedPokemon.PokemonName;
+            NameLabel.SetBinding(Label.TextProperty, bindingName);
+            HeightLabel.SetBinding(Label.TextProperty, bindingHeight);
+            WeightLabel.SetBinding(Label.TextProperty, bindingWeight);
+        }
+
+
     }
 }
