@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinPokemons;assembly=XamarinPokemons"
-             x:Class="XamarinPokemons.MasterPage"
+             xmlns:cell="clr-namespace:XamarinPokemons.View.Menu;assembly=XamarinPokemons"
+             x:Class="XamarinPokemons.View.Menu.MasterPage"
              Title="Something"
              BackgroundColor="AliceBlue">
-
             <ContentPage.Content>
                 <StackLayout>
-            <ListView x:Name="listDetail" HasUnevenRows="True" ItemTapped="{Binding OnItemTapped}">
+					<ListView x:Name="listDetail" ItemsSource="{Binding Pokemons}" HasUnevenRows="True">
                         <ListView.Header>
                             <StackLayout Padding="10,0,0,0" HeightRequest="56" BackgroundColor="DeepSkyBlue" Orientation="Horizontal">
                                 <Image x:Name="L" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" Aspect="AspectFit"></Image>
@@ -17,22 +17,11 @@
                         </ListView.Header>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.View>
-                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="5,0,0,0" >
-                                            <Image Source="{Binding ImageSource}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" Aspect="AspectFit"></Image>
-                                            <StackLayout Spacing="-3" >
-                                                <Label Text="{Binding PokemonName}" ></Label>
-                                                <Label Text="{Binding Name}"  FontSize="10" Margin="3,0,0,0"></Label>
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </ViewCell.View>
-                                </ViewCell>
+								<cell:MenuItem />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
             </ContentPage.Content>
-
 </ContentPage>
 

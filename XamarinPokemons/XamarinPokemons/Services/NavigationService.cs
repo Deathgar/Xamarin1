@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using XamarinPokemons.View.PokemonPages;
+﻿using Xamarin.Forms;
 
 namespace XamarinPokemons.Services
 {
@@ -10,7 +6,7 @@ namespace XamarinPokemons.Services
     {
         public static void Init()
         {
-            var master = new MasterPage();
+            var master = new View.Menu.MasterPage();
 
             var detail = new NavigationPage(new View1())
             {
@@ -28,8 +24,6 @@ namespace XamarinPokemons.Services
         {
             ((MasterDetailPage)Application.Current.MainPage).Detail.Navigation.PushAsync(pokemonPage);
             ((MasterDetailPage) Application.Current.MainPage).IsPresented = false;
-
         }
-
     }
 }

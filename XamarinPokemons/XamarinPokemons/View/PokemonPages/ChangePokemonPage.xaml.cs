@@ -17,19 +17,11 @@ namespace XamarinPokemons.View.PokemonPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangePokemonPage : ContentPage
     {
-        private PokemonViewModel Pokemon { get; set; }
+        private Pokemon Pokemon { get; set; }
         private int resultHeight;
         private int resultWeight;
         private bool canChange = true;
         public Command ChangeCommand => new Command( async () => await Change(), () => canChange);
-
-        //public ICommand ChangeCommand
-        //{
-        //    get { return _baseCommand; }
-        //    set { _baseCommand = value; }
-        //}
-
- 
 
         public ChangePokemonPage(PokemonPageViewModel pokemonPageViewModel)
         {
@@ -43,8 +35,6 @@ namespace XamarinPokemons.View.PokemonPages
 
             canChange = false;
             ChangeCommand.ChangeCanExecute();
-            // ChangeCommand = new Command(async () => await Change());
-
         }
 
         private async Task Change()
@@ -55,39 +45,6 @@ namespace XamarinPokemons.View.PokemonPages
             await Navigation.PopAsync();
         }
 
-        //private void IntChange(object sender, TextChangedEventArgs args)
-        //{
-
-        //}
-
-        //private void IntChange(object sender, TextChangedEventArgs args)
-        //{
-        //    if (Int32.TryParse(Height.Text, out resultHeight) && Int32.TryParse(Weight.Text, out resultWeight))
-        //    {
-        //        canChange = true;
-        //    }
-        //    else
-        //    {
-        //        canChange = false;
-        //    }
-
-
-        //    ((Command)ChangeCommand).ChangeCanExecute();
-        //}
-
-        //private void TextChange(object sender, TextChangedEventArgs args)
-        //{
-        //    if (String.IsNullOrWhiteSpace(Height.Text) && !String.IsNullOrWhiteSpace(Weight.Text) && !String.IsNullOrWhiteSpace(Name.Text))
-        //    {
-        //        canChange = true;
-        //    }
-        //    else
-        //    {
-        //        canChange = false;
-        //    }
-
-        //    ((Command)ChangeCommand).ChangeCanExecute();
-        //}
         private async void Cancel(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
