@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinPokemons.Models;
 using XamarinPokemons.ViewModels;
+using XamarinPokemons.ViewModels.Menu;
 using XamarinPokemons.ViewModels.Pokemons;
 
 namespace XamarinPokemons.View.PokemonPages
@@ -18,9 +19,11 @@ namespace XamarinPokemons.View.PokemonPages
     public partial class ChangePokemonPage : ContentPage
     {
         private Pokemon Pokemon { get; set; }
+        private MenuItemViewModel MenuItem { get; set; }
         private int resultHeight;
         private int resultWeight;
         private bool canChange = true;
+        private bool pokemon = true;
         public Command ChangeCommand => new Command( async () => await Change(), () => canChange);
 
         public ChangePokemonPage(PokemonPageViewModel pokemonPageViewModel)
@@ -37,12 +40,39 @@ namespace XamarinPokemons.View.PokemonPages
             ChangeCommand.ChangeCanExecute();
         }
 
+        public ChangePokemonPage(MenuItemViewModel menuItemViewModel)
+        {
+            InitializeComponent();
+            this.MenuItem = menuItemViewModel;
+            BindingContext = this;
+            Title = Pokemon.PokemonName;
+            NameEntry.Text = Pokemon.Name;
+            HeightEntry.Text = Pokemon.Height.ToString();
+            WeightEntry.Text = Pokemon.Weight.ToString();
+
+            canChange = false;
+            pokemon = false;
+            ChangeCommand.ChangeCanExecute();
+        }
+
         private async Task Change()
         {
-            Pokemon.Name = NameEntry.Text;
-            Pokemon.Height = Int32.Parse(HeightEntry.Text);
-            Pokemon.Weight = Int32.Parse(WeightEntry.Text);
-            await Navigation.PopAsync();
+            if (pokemon)
+            {
+                Pokemon.Name = NameEntry.Text;
+                Pokemon.Height = Int32.Parse(HeightEntry.Text);
+                Pokemon.Weight = Int32.Parse(WeightEntry.Text);
+                await Navigation.PopAsync();
+            }
+            else
+            {
+                //Get
+
+                MenuItem.Name = NameEntry.Text;
+                MenuItem.Height = Int32.Parse(HeightEntry.Text);
+                MenuItem.Weight = Int32.Parse(WeightEntry.Text);
+                await Navigation.PopAsync();
+            }
         }
 
         private async void Cancel(object sender, EventArgs e)
@@ -50,4 +80,6 @@ namespace XamarinPokemons.View.PokemonPages
             await Navigation.PopAsync();
         }
     }
+
+  
 }

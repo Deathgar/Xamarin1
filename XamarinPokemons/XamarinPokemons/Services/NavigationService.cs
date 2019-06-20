@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using XamarinPokemons.View.Menu;
 
 namespace XamarinPokemons.Services
 {
@@ -6,6 +7,8 @@ namespace XamarinPokemons.Services
     {
         public static void Init()
         {
+
+            var master = new MasterPage();
 
             var detail = new NavigationPage(new View1())
             {

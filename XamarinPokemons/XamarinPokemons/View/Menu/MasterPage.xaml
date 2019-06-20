@@ -3,25 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamarinPokemons;assembly=XamarinPokemons"
              xmlns:cell="clr-namespace:XamarinPokemons.View.Menu;assembly=XamarinPokemons"
+             xmlns:customElements="clr-namespace:XamarinPokemons.Custom_Elements;assembly=XamarinPokemons"
              x:Class="XamarinPokemons.View.Menu.MasterPage"
              Title="Something"
              BackgroundColor="AliceBlue">
             <ContentPage.Content>
-                <StackLayout>
-					<ListView x:Name="listDetail" ItemsSource="{Binding Pokemons}" HasUnevenRows="True">
-                        <ListView.Header>
+        <StackLayout x:Name="MenuList">
+            <ListView x:Name="listDetail" ItemTapped="OnItemTapped" HasUnevenRows="True">
+                <ListView.Header>
                             <StackLayout Padding="10,0,0,0" HeightRequest="56" BackgroundColor="DeepSkyBlue" Orientation="Horizontal">
                                 <Image x:Name="L" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" Aspect="AspectFit"></Image>
                                 <Label Text="Pokemons" FontAttributes="Bold" FontSize="23" HorizontalOptions="Center" VerticalOptions="Center"></Label>
                             </StackLayout>
-                        </ListView.Header>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-								<cell:MenuItem />
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </ContentPage.Content>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="5,0,0,0" >
+                                    <Image Source="{Binding ImageSource}" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" Aspect="AspectFit"></Image>
+                                    <StackLayout Spacing="-3" >
+                                        <Label Text="{Binding PokemonName}" ></Label>
+                                        <Label Text="{Binding Name}"  FontSize="10" Margin="3,0,0,0"></Label>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
 

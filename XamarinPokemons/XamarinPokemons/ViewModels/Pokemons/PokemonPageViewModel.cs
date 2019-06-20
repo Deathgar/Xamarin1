@@ -24,16 +24,16 @@ namespace XamarinPokemons.ViewModels.Pokemons
 				if (_selectedPokemon != value)
 				{
 					_selectedPokemon = value;
-					OnPropertyChanged(nameof(PokemonPageViewModel));
+					OnPropertyChanged(nameof(SelectedPokemon));
 					NavigationService.GoOnPokemonPage(new PokemonPage(this));
 				}
 			}
 		}
 
-		public void GoOnPokemonPage(Page pokemonPage)
-        {
-            NavigationService.GoOnPokemonPage(pokemonPage);
-        }
+		//public void GoOnPokemonPage(Page pokemonPage)
+  //      {
+  //          NavigationService.GoOnPokemonPage(pokemonPage);
+  //      }
 
         private void GoOnChangePage()
         {

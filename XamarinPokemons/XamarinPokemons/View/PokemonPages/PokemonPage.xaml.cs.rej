@@ -1,0 +1,16 @@
+diff a/XamarinPokemons/XamarinPokemons/View/PokemonPages/PokemonPage.xaml.cs b/XamarinPokemons/XamarinPokemons/View/PokemonPages/PokemonPage.xaml.cs	(rejected hunks)
+@@ -1,13 +0,5 @@
+-﻿using System;
+-using System.Collections.Generic;
+-using System.Linq;
+-using System.Reflection;
+-using System.Text;
+-using System.Threading.Tasks;
+-
+-using Xamarin.Forms;
++﻿using Xamarin.Forms;
+ using Xamarin.Forms.Xaml;
+-using XamarinPokemons.Models;
+ using XamarinPokemons.ViewModels.Pokemons;
+ 
+ namespace XamarinPokemons.View.PokemonPages

@@ -1,5 +1,7 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
+using XamarinPokemons.Services;
+using XamarinPokemons.View.PokemonPages;
 
 namespace XamarinPokemons.ViewModels.Menu
 {
@@ -70,10 +72,10 @@ namespace XamarinPokemons.ViewModels.Menu
 		                       int.TryParse(Weight + "", out _) ||
 		                       int.TryParse(Height + "", out _);
 
-		public ICommand ChangePokemonCommand => new Command(OnItemTapped);
-		public void OnItemTapped(object sender)
-		{
-		
-		}
-	}
+        private void GoOnChangePage()
+        {
+            NavigationService.GoOnPokemonPage(new ChangePokemonPage(this));
+        }
+
+    }
 }

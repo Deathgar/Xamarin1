@@ -2,12 +2,14 @@
 using Xamarin.Forms;
 using XamarinPokemons.ViewModels.Menu;
 using System.Windows.Input;
+using XamarinPokemons.Services;
+using XamarinPokemons.View.PokemonPages;
 
 namespace XamarinPokemons.ViewModels
 {
     class MasterViewModel: BaseViewModel
-	{
-		private ObservableCollection<MenuItemViewModel> _pokemons;
+    { 
+        private ObservableCollection<MenuItemViewModel> _pokemons;
 		public ObservableCollection<MenuItemViewModel> Pokemons
 		{
 			get => _pokemons;
@@ -24,7 +26,5 @@ namespace XamarinPokemons.ViewModels
                 new MenuItemViewModel { PokemonName = "Charizard", Name = "Char", Height = 170, Weight = 90, ImageSource = "Charizard.png"},
                 new MenuItemViewModel { PokemonName = "Squirtle", Name = "Squirtle", Height = 50, Weight = 9, ImageSource = ImageSource.FromFile("Squirtle.png")}};
         }
-
-		
-	}
+    }
 }
