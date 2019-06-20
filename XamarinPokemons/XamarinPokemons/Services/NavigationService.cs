@@ -6,7 +6,6 @@ namespace XamarinPokemons.Services
     {
         public static void Init()
         {
-            var master = new View.Menu.MasterPage();
 
             var detail = new NavigationPage(new View1())
             {
