@@ -4,7 +4,7 @@ using System.Text;
 
 namespace XamarinPokemons.Database
 {
-    public interface ISQLite
+    public interface IPath
     {
         string GetDatabasePath(string filename);
     }
